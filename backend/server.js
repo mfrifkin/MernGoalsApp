@@ -22,6 +22,7 @@ app.listen(port, ()=>console.log(`server running on ${port}`))
 // executes that file and returns whatever is specified to be exported
 // from that file, the second param is a callback function
 app.use('/api/goals', require('./routes/goalRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
 //use the errorhandler that we wrote in the middleware folder instead of
 // expresses default error handler

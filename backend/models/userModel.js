@@ -1,18 +1,21 @@
 const mongoose = require('mongoose')
 
 // the schema defines the fields that each object will have
-const goalSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
 
-    text:{
+    name:{
         type: String,
-        required: [true,'Please add text']
+        require: [true,'Please add text']
     },
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref:'User' //reference for which model the id will come from
+    email:{
+        type: String,
+        require: [true,'Please add email'],
+        unique: true
+    },
+    password:{
+        type: String,
+        require: [true,'Please add password']
     }
-
 },
 {
     timestamps:true
@@ -22,5 +25,5 @@ const goalSchema = mongoose.Schema({
 // of db object with the name that you pass in (in this case its 'goal')
 // and fields as defined in the schema, its kind of like writing
 // a class for an object, in addition to the fields that we supply
-// the model object has many useful built in mongoose
-module.exports = mongoose.model('Goal',goalSchema)
+// the model object has many useful built in mongoose methods
+module.exports = mongoose.model('User',userSchema)
