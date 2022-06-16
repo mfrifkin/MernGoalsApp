@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react'
 import { FaSignInAlt } from 'react-icons/fa'
+import {useSelector, useDispatch} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
+import {toast} from 'react-toastify'
+import {login, reset} from '../features/auth/authSlice'
+import Spinner from '../components/Spinner'
 
 
 function Login() {
@@ -8,7 +13,32 @@ function Login() {
         password: '',
     })
 
-    const { name, email, password, password2 } = formData;
+    const { email, password } = formData;
+
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch();
+
+
+    const {user, isLoading,isError,isSuccess,message} = useSelector((state)=>state.auth)
+
+           useEffect(()=>{
+
+            //if isError became true show an error message
+            if (isError){
+                toast.error(message)
+            }
+    
+            // in this case we need to log the user in
+            if(isSuccess || user){
+                // is the dashboard url
+                 navigate('/')
+            }
+    
+            // reset all fields stored in the store to false, so its fresh next 
+            // time a user might try to register
+            dispatch(reset())
+        },[user, isError, isSuccess, message, navigate, dispatch]) 
 
     const onChange = (e) => {
         // state updates are asynchronous and batched, so you cant rely
@@ -25,9 +55,19 @@ function Login() {
 
     }
 
+  
     const onSubmit = (e) =>{
         e.preventDefault()
+
+        const userData = {
+            email,
+            password
+         }
+            dispatch(login(userData))
+       
     }
+
+
 
     return (
         <>

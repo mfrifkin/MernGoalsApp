@@ -4,6 +4,7 @@ const port = process.env.PORT || 5000
 const {errorHandler} = require('./middleware/errorMiddleware.js')
 const {connectDB} = require('./config/db.js')
 const colors = require('colors')
+var cors = require('cors')
 
 connectDB();
 
@@ -13,14 +14,16 @@ const app = express()
 // stuff in the body
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-
+app.use(cors())
 app.listen(port, ()=>console.log(`server running on ${port}`))
 
 // this line matches a request to /api/goals and send it to 
 // the file specified in the require to be handled
 // the require() is a node function that goes to that path
 // executes that file and returns whatever is specified to be exported
-// from that file, the second param is a callback function
+// from that file, its really just an import statement. So instead of this 
+//syntax, we could've imported each router as variables in the top of this file and 
+// used them 
 app.use('/api/goals', require('./routes/goalRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 

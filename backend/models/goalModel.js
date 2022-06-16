@@ -22,5 +22,6 @@ const goalSchema = mongoose.Schema({
 // of db object with the name that you pass in (in this case its 'goal')
 // and fields as defined in the schema, its kind of like writing
 // a class for an object, in addition to the fields that we supply
-// the model object has many useful built in mongoose
+// the model object has many useful built in mongoose functions for 
+// querying
 module.exports = mongoose.model('Goal',goalSchema)
