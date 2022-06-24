@@ -25,7 +25,6 @@ export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
             // message
         return thunkAPI.rejectWithValue(message)
 
-
     }
 })
 
@@ -47,7 +46,7 @@ export const register = createAsyncThunk('auth/register', async (user, thunkAPI)
 
 export const logout = createAsyncThunk('auth/logout', 
  async ()=>{
-    await authService.logout
+    await authService.logout()
 })
 
 export const authSlice = createSlice({
@@ -59,6 +58,7 @@ export const authSlice = createSlice({
             state.isError = false
             state.isSuccess = false
             state.message = ' '
+            
 
         }
     },
