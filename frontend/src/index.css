@@ -93,10 +93,11 @@ h3 {
 }
 
 .goal {
-  background-color: #f4f4f4;
+  background-color: #a2def4;
   margin: 10px 0;
   padding: 20px 0 10px;
   position: relative;
+  border-radius:10px;
 }
 
 .goal .close {
@@ -107,6 +108,16 @@ h3 {
   border: none;
   background: none;
 }
+
+.goal .edit {
+  position: absolute; 
+  top: 10px;
+  right: 30px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
 
 .form,
 .content {
@@ -123,7 +134,7 @@ h3 {
 .form-group select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #e6e6e6;
+  border: 1px solid #181717;
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: inherit;
@@ -212,4 +223,25 @@ h3 {
   .heading p {
     font-size: 1.5rem;
   }
+}
+
+.buttons {
+  display: flex;
+  width: 5%;
+  justify-content: space-between;
+}
+
+.smallBtn:hover{
+  cursor: pointer;
+}
+
+.smallBtn{
+  border: none;
+  background: inherit;
+}
+
+.edit-form input,
+.edit-form button{
+  font-size: 16pt;
+  margin-bottom: 16px;
 }
