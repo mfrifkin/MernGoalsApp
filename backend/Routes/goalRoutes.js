@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getGoals, setGoal, updateGoal, deleteGoal } = require('../controllers/goalController')
+const { getGoals, setGoal, updateGoal, deleteGoal } = require('../controllers/goalController.js')
 const {protect} = require('../middleware/authMiddleware')
 // this router object now handles the requests that app sends
 // from server.js, this allows neater code and more scalability

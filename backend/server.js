@@ -28,8 +28,8 @@ app.listen(port, ()=>console.log(`server running on ${port}`))
 // from that file, its really just an import statement. So instead of this 
 //syntax, we could've imported each router as variables in the top of this file and 
 // used them 
-app.use('/api/goals', require('./Routes/goalRoutes'));
-app.use('/api/users', require('./Routes/userRoutes'));
+app.use('/api/goals', require('./routes/goalRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
 
 // Serve frontend
