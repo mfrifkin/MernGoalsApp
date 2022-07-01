@@ -1,8 +1,6 @@
 import axios from 'axios';
  
-const API_URL = '/api/goals'
-const HOST = 'localhost:5000' 
-const urlString = 'http://localhost:5000/api/goals/'
+const API_URL = '/api/goals/'
 
 const fetchGoals = async (token) =>{
     //const token = JSON.parse(localStorage.getItem('user'))['token'] 
@@ -10,7 +8,7 @@ const fetchGoals = async (token) =>{
     const headers = {
         authorization:`Bearer  ${token}`
     }
-    const response = await axios.get('http://localhost:5000/api/goals', {
+    const response = await axios.get(API_URL, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -26,7 +24,7 @@ const createGoal = async (goalText, token) =>{
           Authorization: `Bearer ${token}`,
         },
       }
-      const response = await axios.post(urlString, {text: goalText}, config)
+      const response = await axios.post(API_URL, {text: goalText}, config)
     
       return response.data
 }
@@ -38,7 +36,7 @@ const deleteGoal = async (goalId, token) =>{
         Authorization: `Bearer ${token}`,
       },
     }
-    const response = await axios.delete(urlString+goalId, config)
+    const response = await axios.delete(API_URL+goalId, config)
   
     return response.data
 }
@@ -50,7 +48,7 @@ const updateGoal = async (goalId, token, text) =>{
         Authorization: `Bearer ${token}`,
       },
     }
-    const response = await axios.put(urlString+goalId,{text:text}, config)
+    const response = await axios.put(API_URL+goalId,{text:text}, config)
   
     return response.data
 }
